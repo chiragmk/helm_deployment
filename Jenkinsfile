@@ -5,8 +5,8 @@ pipeline {
         stage('Build') {
             steps {
                script{
-					dir(mysql_project){
-					sh("helm install . --generate-name")
+					pwd/*(helm_deployment/mysql_project){
+					("helm install . --generate-name")*/
 					}
 					
 			   }
