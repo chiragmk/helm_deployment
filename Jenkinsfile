@@ -4,7 +4,12 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo 'Building..'
+               script{
+					dir(helm_deployment/mysql_project){
+					sh("helm install . --generate-name")
+					}
+					
+			   }
             }
         }
         stage('Test') {
