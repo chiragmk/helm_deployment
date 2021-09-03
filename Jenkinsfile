@@ -7,7 +7,7 @@ pipeline {
                script{
 					dir ('mysql_project'){
 					("helm install . --generate-name")
-					
+					}
 					
 			   }
             }
