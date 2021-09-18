@@ -18,7 +18,8 @@ pipeline {
                 DEBUG_FLAGS = '-g'
             }
             steps {
-                sh 'printenv'
+                sh 'echo "$CC"'
+                sh 'echo "$EXIT_STATUS"'
             }
         }
     }
