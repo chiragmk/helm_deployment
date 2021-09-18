@@ -13,7 +13,7 @@ pipeline {
             steps {
                 echo "Database engine is ${DB_ENGINE}"
                 echo "DISABLE_AUTH is ${DISABLE_AUTH}"
-                echo "branch name is ${JENKINS_URL}"
+                echo "branch name is ${JOB_NAME}"
             
             }
         }
