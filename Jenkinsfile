@@ -1,20 +1,24 @@
 pipeline {
-    agent {
-        label '!windows'
-    }
-
+    agent any 
     environment {
-        DISABLE_AUTH = 'true'
-        DB_ENGINE    = 'sqlite'
+        // Using returnStdout
+        CC = """${sh(
+                returnStdout: true,
+                script: 'echo "JAVA_HOME"'
+            )}""" 
+        // Using returnStatus
+        EXIT_STATUS = """${sh(
+                returnStatus: true,
+                script: 'exit 1'
+            )}"""
     }
-
     stages {
-        stage('Build') {
+        stage('Example') {
+            environment {
+                DEBUG_FLAGS = '-g'
+            }
             steps {
-                echo "Database engine is ${DB_ENGINE}"
-                echo "DISABLE_AUTH is ${DISABLE_AUTH}"
-                echo "branch name is ${WORKSPACE}"
-            
+                sh 'printenv'
             }
         }
     }
