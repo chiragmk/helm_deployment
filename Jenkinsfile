@@ -4,7 +4,7 @@ pipeline {
         // Using returnStdout
         CC = """${sh(
                 returnStdout: true,
-                script: 'echo "JAVA_HOME"'
+                script: 'echo aws --version'
             )}""" 
         // Using returnStatus
         EXIT_STATUS = """${sh(
