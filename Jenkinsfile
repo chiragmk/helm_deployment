@@ -4,7 +4,7 @@ pipeline {
         // Using returnStdout
         CC = """${sh(
                 returnStdout: true,
-                script: 'echo aws --version'
+                script: 'aws --version'
             )}""" 
         // Using returnStatus
         EXIT_STATUS = """${sh(
