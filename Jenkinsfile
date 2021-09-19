@@ -1,25 +1,11 @@
 pipeline {
-    agent any 
-    environment {
-        // Using returnStdout
-        CC = """${sh(
-                returnStdout: true,
-                script: 'aws s3 ls'
-            )}""" 
-        // Using returnStatus
-        EXIT_STATUS = """${sh(
-                returnStatus: true,
-                script: 'exit 1'
-            )}"""
-    }
+    agent any
+
     stages {
-        stage('Example') {
-            environment {
-                DEBUG_FLAGS = '-g'
-            }
+        stage('Build') {
             steps {
-                sh 'echo "$CC"'
-                sh 'echo "$EXIT_STATUS"'
+                sh 'make' 
+                archiveArtifacts artifacts: '**/mysql_project/*helmignore', fingerprint: true 
             }
         }
     }
